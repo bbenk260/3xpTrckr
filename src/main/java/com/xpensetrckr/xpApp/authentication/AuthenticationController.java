@@ -1,5 +1,6 @@
 package com.xpensetrckr.xpApp.authentication;
 
+import com.xpensetrckr.xpApp.registration.RegistrationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +12,6 @@ public class AuthenticationController {
 
     public AuthenticationController(AuthenticationService authenticationService, AuthenticationServiceImpl authenticationService1) {
         this.authenticationService = authenticationService1;
-    }
-
-    @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register (@RequestBody RegisterRequest registerRequest){
-        return ResponseEntity.ok(authenticationService.register(registerRequest));
     }
 
     @PostMapping("/authenticate")

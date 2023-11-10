@@ -18,7 +18,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework:spring-context-support:6.0.13'
     implementation 'org.projectlombok:lombok:1.18.22'
+	implementation 'me.minidigger:MiniMessage:2.1.0'
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
     runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'com.mysql:mysql-connector-j'

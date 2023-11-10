@@ -1,6 +1,7 @@
 package com.xpensetrckr.xpApp.authentication;
 
 import com.xpensetrckr.xpApp.config.JwtService;
+import com.xpensetrckr.xpApp.registration.RegistrationRequest;
 import com.xpensetrckr.xpApp.user.Role;
 import com.xpensetrckr.xpApp.user.User;
 import com.xpensetrckr.xpApp.user.UserRepository;
@@ -24,11 +25,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public AuthenticationResponse register(RegisterRequest registerRequest) {
+    public AuthenticationResponse register(RegistrationRequest registrationRequest) {
         User user = User.builder()
-                .username(registerRequest.getUsername())
-                .password(passwordEncoder.encode(registerRequest.getPassword()))
-                .email(registerRequest.getEmail())
+                .username(registrationRequest.getUsername())
+                .password(passwordEncoder.encode(registrationRequest.getPassword()))
+                .email(registrationRequest.getEmail())
                 .role(Role.USER)
                 .build();
         userRepository.save(user);

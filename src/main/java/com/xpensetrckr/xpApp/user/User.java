@@ -24,7 +24,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
-
+    private String firstName;
+    private String lastName;
     private String password;
     private String email;
     private LocalDate dateOfBirth;
@@ -32,9 +33,41 @@ public class User implements UserDetails {
     private Integer age;
     @Enumerated(EnumType.STRING)
     private Role role;
+    private Boolean locked = false;
+    private Boolean enabled = false;
+
+    public User(String firstName,
+                String lastName,
+                String username,
+                String email,
+                String password,
+                Role role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
     public Long getId() {
         return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setUsername(String username) {
@@ -110,7 +143,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return !locked;
     }
 
     @Override
@@ -120,6 +153,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 }
